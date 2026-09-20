@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caso 19 – Viña Urbana – Tienda de Vinos Boutique</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Georgia', serif; background-color: #faf8f5; color: #2c2c2c; }
+        .hero-caso {
+            background: linear-gradient(135deg, #4a0e2e 0%, #722f37 50%, #8b0000 100%);
+            color: white;
+            padding: 60px 0;
+        }
+        .section-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 5px solid #722f37;
+        }
+        .section-title {
+            color: #4a0e2e;
+            font-weight: bold;
+            border-bottom: 2px solid #d4a574;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .badge-wine {
+            background-color: #722f37;
+            color: white;
+            font-size: 0.85rem;
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+        .table-wine thead { background-color: #4a0e2e; color: white; }
+        .table-wine tbody tr:hover { background-color: #fdf5f0; }
+        .icon-wine { color: #722f37; font-size: 1.3rem; }
+        .footer-wine {
+            background-color: #2c1810;
+            color: #d4a574;
+        }
+    </style>
+</head>
+<body>
+
+<!-- BARRA DE NAVEGACIÓN -->
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #2c1810;">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">🍷 Viña Urbana – Caso 19</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#contexto">Contexto</a></li>
+                <li class="nav-item"><a class="nav-link" href="#negocio">Modelo de Negocio</a></li>
+                <li class="nav-item"><a class="nav-link" href="#problema">Problema</a></li>
+                <li class="nav-item"><a class="nav-link" href="#solucion">Solución</a></li>
+                <li class="nav-item"><a class="nav-link" href="#funcionalidades">Funcionalidades</a></li>
+                <li class="nav-item"><a class="nav-link" href="#casos-uso">Casos de Uso</a></li>
+                <li class="nav-item"><a class="nav-link" href="#no-funcionales">No Funcionales</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero-caso text-center">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Caso 19</h1>
+        <h2 class="display-5 mt-3">Sistema de Ventas On-line</h2>
+        <h3 class="mt-2" style="color: #d4a574;">Viña Urbana – Tienda de Vinos Boutique</h3>
+        <p class="lead mt-4 mx-auto" style="max-width: 700px;">
+            Caso de estudio adaptado para una tienda de vinos boutique con venta en línea y despacho a domicilio.
+        </p>
+    </div>
+</section>
+
+<div class="container my-5">
+
+    <!-- CONTEXTO -->
+    <section id="contexto">
+        <div class="section-card">
+            <h2 class="section-title"><i class="bi bi-geo-alt icon-wine me-2"></i>Contexto</h2>
+            <p>
+                La tienda de vinos <strong>Viña Urbana</strong> es una empresa dedicada a la comercialización de vinos boutique, vinos de autor y etiquetas exclusivas de pequeños viñedos artesanales. La tienda se encuentra ubicada en la comuna de <strong>Providencia</strong>, es de tamaño reducido y tiene capacidad para atender a <strong>15 clientes</strong> de forma simultánea en su sala deDegustación.
+            </p>
+            <p>
+                La atención se realiza de forma personalizada, donde los clientes degustan y eligen los vinos a adquirir previa lectura de la carta de vinos confeccionada para este propósito. Una segunda modalidad es la <strong>venta de vinos para llevar</strong>, donde el cliente realiza su pedido en el mostrador para retirarlo en el local o recibirlo en su domicilio.
+            </p>
+            <p>
+                Viña Urbana se especializa en vinos provenientes de valles centro y sur de Chile, con énfasis en productores boutique que elaboran ediciones limitadas. La tienda ofrece experiencias de cata, asesoría personalizada para maridar y un catálogo curado que cambia estacionalmente.
+            </p>
+        </div>
+    </section>
+
+    <!-- MODELO DE NEGOCIO -->
+    <section id="negocio">
+        <div class="section-card">
+            <h2 class="section-title"><i class="bi bi-shop icon-wine me-2"></i>Modelo de Negocio</h2>
+            <p>
+                La tienda Viña Urbana realiza la venta de sus productos en su propio local. Los clientes solicitan los vinos a consumir previa lectura de la <strong>carta de vinos o catálogo</strong> provisto para tales efectos. Una vez terminada la degustación o selección, los clientes pagan en la caja. Cada botella está identificada en la boleta de compra junto al correspondiente precio y cantidad adquirida.
+            </p>
+            <p>
+                Una vez determinado el total de la venta, el cajero recibe el pago y entrega el vuelto, si corresponde. Posteriormente, el sistema de caja genera la <strong>boleta de venta</strong> y el cajero la entrega al cliente.
+            </p>
+            <p>
+                Adicionalmente, la tienda realiza <strong>venta de vinos para llevar</strong>, por lo que tiene habilitado un mostrador de atención. Una vez que el cliente realiza el pedido en mostrador, se le genera la <strong>orden de compra</strong>. El cliente realiza el pago en caja y contra este evento se procede al embalaje y entrega del pedido.
+            </p>
+            <p>
+                Para pedidos en línea, el cliente accede al sitio web, selecciona los vinos deseados, elige método de pago y coordina la entrega o retiro. La tienda cuenta con un servicio de <strong>despacho a domicilio</strong> dentro de un radio de 5 kilómetros. Al finalizar la jornada, el dueño realiza el retiro del dinero previa consulta del monto recaudado por la caja.
+            </p>
+        </div>
+    </section>
+
+    <!-- PROBLEMA -->
+    <section id="problema">
+        <div class="section-card">
+            <h2 class="section-title"><i class="bi bi-exclamation-triangle icon-wine me-2"></i>Problema</h2>
+            <p>
+                Los dueños de Viña Urbana están convencidos de que ofrecen vinos de excelente calidad y una experiencia diferenciada (según comentarios de sus mismos clientes). Sin embargo, han visto <strong>disminuidas sus ventas en el último año</strong>, esto como producto de distintos hechos:
+            </p>
+            <ul class="list-group list-group-flush mb-3">
+                <li class="list-group-item">
+                    <i class="bi bi-arrow-right-circle icon-wine me-2"></i>
+                    <strong>Cambio de preferencias de los clientes</strong>, los cuales cada vez tienen menos tiempo disponible y requieren efectuar sus compras de vinos en diferentes horarios y estando en distintos lugares.
+                </li>
+                <li class="list-group-item">
+                    <i class="bi bi-arrow-right-circle icon-wine me-2"></i>
+                    <strong>Poco espacio físico</strong> con el que cuenta la tienda, lo que provoca incomodidad en los clientes prefiriendo la competencia con tiendas más amplias o con opciones de compra digital.
+                </li>
+                <li class="list-group-item">
+                    <i class="bi bi-arrow-right-circle icon-wine me-2"></i>
+                    <strong>Falta de un esquema de venta en línea y despacho a domicilio</strong>, lo cual es más cómodo para el cliente, transformándose en una de las mayores solicitudes por parte de estos. La mayor accesibilidad a tiendas de vinos por internet y plataformas de delivery especializadas hacen que los clientes se inclinen por otras marcas en desmedro de la buena oferta de Viña Urbana.
+                </li>
+            </ul>
+            <div class="alert alert-warning" style="border-left: 5px solid #d4a574;">
+                <strong>⚠️ Alerta:</strong> De mantenerse esta situación, la viabilidad de la tienda estará en juego.
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUCIÓN -->
+    <section id="solucion">
+        <div class="section-card">
+            <h2 class="section-title"><i class="bi bi-lightbulb icon-wine me-2"></i>Solución</h2>
+            <p>
+                Para evitar perder clientes, los dueños de Viña Urbana han decidido participar en el mercado de <strong>ventas on-line</strong>, lo que permitirá ampliar su mercado de potenciales clientes y satisfacer de mejor forma a sus clientes actuales.
+            </p>
+            <p>
+                Este modelo de negocio implica que debe incorporar una nueva forma de vender, a través de internet, para lo cual se requiere implementar un <strong>sistema de ventas on-line por internet</strong>.
+            </p>
+            <p>
+                En esta forma de venta, el cliente puede acceder al sitio y observar el <strong>catálogo de vinos, ofertas y experiencias de cata disponibles</strong>. Si desea comprar, debe registrarse con un proceso simple pero seguro de registro. Una vez registrado, puede efectuar compras, las cuales debe cancelar mediante una plataforma de pago externa (como Webpay o transferencia bancaria), que recaudan el dinero y lo transfieren a la cuenta de Viña Urbana.
+            </p>
+            <p>
+                Una vez concretado el pago, el área de despacho a domicilio procede a preparar el pedido para efectuar su entrega. Esta entrega es <strong>gratuita dentro de un radio de 5 kilómetros</strong>. Para pedidos fuera de este radio, se cobra un costo adicional de despacho. Una vez preparado el pedido, se puede efectuar el despacho correspondiente, para lo cual se cuenta con mensajeros propios que utilizan sus vehículos para las entregas, asegurando la correcta temperatura y manipulación de las botellas.
+            </p>
+        </div>
+    </section>
+
+    <!-- FUNCIONALIDADES -->
+    <section id="funcionalidades">
+        <div class="section-card">
+            <h2 class="section-title"><i class="bi bi-gear icon-wine me-2"></i>Funcionalidades del Producto</h2>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: #722f37;"><i class="bi bi-cart3 me-2"></i>Carrito de Compras</h5>
+                            <p class="card-text">El sistema debe permitir a los clientes armar un pedido de compras, considerando los vinos y productos disponibles en el catálogo (botellas, cajas degustación, accesorios).</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: #722f37;"><i class="bi bi-credit-card me-2"></i>Confirmación de Pago</h5>
+                            <p class="card-text">La orden se preparará una vez que se ha confirmado el pago de esta.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: #722f37;"><i class="bi bi-x-circle me-2"></i>Anulación de Compra</h5>
+                            <p class="card-text">El sistema debe permitir efectuar una anulación de compra, ya que el cliente puede solicitar anularla indicando el motivo por el cual se anula.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: #722f37;"><i class="bi bi-receipt me-2"></i>Registro de Ventas</h5>
+                            <p class="card-text">El sistema debe permitir realizar las ventas de los pedidos realizados por los clientes. Las ventas las deben realizar únicamente a pedidos de los clientes registrados. Las ventas se asocian a una caja virtual operada por funcionarios de la tienda.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: #722f37;"><i class="bi bi-person-plus me-2"></i>Registro de Clientes</h5>
+                            <p class="card-text">El sistema debe permitir el registro de clientes, quedando habilitados para realizar compras y acceder a promociones y ofertas. Los datos incluyen: RUT, nombre completo, dirección, comuna, región, fecha de nacimiento, sexo, correo electrónico y teléfono. Se debe validar la existencia del correo electrónico.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: #722f37;"><i class="bi bi-person-check me-2"></i>Doble Canal de Registro</h5>
+                            <p class="card-text">El registro puede ser directamente en la tienda (por el administrador) o por el cliente mediante el sitio web. Se debe validar la existencia del correo en ambos casos.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: #722f37;"><i class="bi bi-box-seam me-2"></i>Gestión de Inventario</h5>
+                            <p class="card-text">Debe ser posible administrar la disponibilidad de cada vino. El sistema debe poder consultar y actualizar la disponibilidad de los productos del catálogo (ediciones limitadas, stock por bodega).</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: #722f37;"><i class="bi bi-envelope me-2"></i>Boleta Digital</h5>
+                            <p class="card-text">Para cada venta, el sistema debe generar su respectiva boleta, la cual será enviada por correo electrónico al cliente en formato digital. Esta emisión es efectuada por el cajero virtual.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: #722f37;"><i class="bi bi-bar-chart-line me-2"></i>Reportes de Ventas</h5>
+                            <p class="card-text">Para el dueño, el sistema debe mostrar un reporte con las ventas realizadas de acuerdo a un período de consulta (diario, semanal, mensual, anual).</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: #722f37;"><i class="bi bi-database me-2"></i>Mantenedores</h5>
+                            <p class="card-text">Se debe contar con mantenedores de maestro de datos para productos (vinos, accesorios), usuarios y clientes.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: #722f37;"><i class="bi bi-shield-lock me-2"></i>Validación de Correo</h5>
+                            <p class="card-text">La validación de correos electrónicos implica comprobar que el correo existe y está activo mediante una API de mensajería.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h class="card-title" style="color: #722f37;"><i class="bi bi-person-badge me-2"></i>Autenticación y Perfiles</h5>
+                            <p class="card-text">El sistema debe permitir autenticación de usuarios para limitar el acceso según el perfil asignado por el administrador.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: #722f37;"><i class="bi bi-truck me-2"></i>Órdenes de Despacho</h5>
+                            <p class="card-text">Para el encargado de despacho, el sistema debe imprimir las órdenes de despacho, las cuales serán entregadas a bodega para su preparación y despacho en el orden en que van llegando.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CASOS DE USO -->
+    <section id="casos-uso">
+        <div class="section-card">
+            <h2 class="section-title"><i class="bi bi-diagram-3 icon-wine me-2"></i>Casos de Uso</h2>
+            <p class="mb-4">Especificación de los casos de uso del sistema <strong>Viña Urbana – Ventas On-line</strong>:</p>
+
+            <div class="table-responsive">
+                <table class="table table-wine table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th style="width: 80px;">ID</th>
+                            <th>Nombre del Caso de Uso</th>
+                            <th>Requisitos Asociados</th>
+                            <th>Actores Involucrados</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="badge badge-wine">CU1</span></td>
+                            <td>Autenticar Usuarios</td>
+                            <td>RF 12</td>
+                            <td>Administrador, Cliente, Encargado de Despachos, Dueño</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-wine">CU2</span></td>
+                            <td>Administrar Usuarios</td>
+                            <td>RF 10</td>
+                            <td>Administrador</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-wine">CU3</span></td>
+                            <td>Administrar Clientes</td>
+                            <td>RF 5, 6 y 10</td>
+                            <td>Administrador, Cliente</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-wine">CU4</span></td>
+                            <td>Administrar Catálogo de Vinos</td>
+                            <td>RF 7</td>
+                            <td>Administrador, Dueño</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-wine">CU5</span></td>
+                            <td>Generar Pedido de Vinos</td>
+                            <td>RF 1</td>
+                            <td>Cliente</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-wine">CU6</span></td>
+                            <td>Realizar Venta</td>
+                            <td>RF 4, 8</td>
+                            <td>Cajero Virtual (funcionario de la tienda)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-wine">CU7</span></td>
+                            <td>Anular Compra de Vinos</td>
+                            <td>RF 3</td>
+                            <td>Cliente, Administrador</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-wine">CU8</span></td>
+                            <td>Generar Reporte de Ventas</td>
+                            <td>RF 9</td>
+                            <td>Administrador, Dueño</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-wine">CU9</span></td>
+                            <td>Obtener Orden de Despacho</td>
+                            <td>RF 13</td>
+                            <td>Encargado de Bodega / Despacho</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-4 p-3 bg-light rounded">
+                <h5><i class="bi bi-info-circle icon-wine me-2"></i>Diagrama de Casos de Uso</h5>
+                <p class="text-muted mb-0">
+                    El diagrama de casos de uso describe las interacciones entre los actores (Cliente, Administrador, Dueño, Cajero Virtual, Encargado de Despacho) y las funcionalidades del sistema de ventas on-line de Viña Urbana. Cada caso de uso representa una unidad funcional independiente que el sistema debe soportar.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- REQUERIMIENTOS NO FUNCIONALES -->
+    <section id="no-funcionales">
+        <div class="section-card">
+            <h2 class="section-title"><i class="bi bi-list-check icon-wine me-2"></i>Requerimientos No Funcionales</h2>
+
+            <div class="accordion" id="accordionRNF">
+                <!-- Arquitectura y Tecnología -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#rnf1">
+                            <i class="bi bi-cpu icon-wine me-2"></i> Arquitectura y Tecnología
+                        </button>
+                    </h2>
+                    <div id="rnf1" class="accordion-collapse collapse show" data-bs-parent="#accordionRNF">
+                        <div class="accordion-body">
+                            <ul class="list-unstyled">
+                                <li class="mb-2">✅ El sistema debe ser desarrollado en ambiente <strong>WEB</strong>.</li>
+                                <li class="mb-2">✅ Debe construirse en arquitectura web mediante <strong>modelo de capas</strong>, logrando separación de interfaz gráfica, reglas de negocio y repositorio de datos.</li>
+                                <li class="mb-2">✅ Debe utilizar la base de datos <strong>Oracle</strong> y un lenguaje de programación orientado a objetos como <strong>Microsoft .NET</strong> o <strong>J2EE</strong>.</li>
+                                <li class="mb-2">✅ El proceso automatizado debe ser a través de <strong>procedimientos almacenados</strong>.</li>
+                                <li class="mb-2">✅ La integración de los sistemas se debe realizar a través de <strong>WEB Services</strong>.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seguridad y Validación -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#rnf2">
+                            <i class="bi bi-shield-lock icon-wine me-2"></i> Seguridad y Validación
+                        </button>
+                    </h2>
+                    <div id="rnf2" class="accordion-collapse collapse" data-bs-parent="#accordionRNF">
+                        <div class="accordion-body">
+                            <ul class="list-unstyled">
+                                <li class="mb-2">✅ El envío de correos y validación de cuentas deben considerar una <strong>API de correo electrónico</strong>.</li>
+                                <li class="mb-2">✅ El sistema debe incluir medidas de seguridad: <strong>cifrado de clave y control de sesiones</strong>.</li>
+                                <li class="mb-2">✅ Todas las entradas de datos deben considerar las <strong>validaciones correspondientes</strong>.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interfaz de Usuario -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#rnf3">
+                            <i class="bi bi-display icon-wine me-2"></i> Interfaz de Usuario
+                        </button>
+                    </h2>
+                    <div id="rnf3" class="accordion-collapse collapse" data-bs-parent="#accordionRNF">
+                        <div class="accordion-body">
+                            <ul class="list-unstyled">
+                                <li class="mb-2">✅ Las aplicaciones deben presentar una interfaz gráfica con los elementos de diseño incorporados en aplicaciones Windows.</li>
+                                <li class="mb-2">✅ La aplicación web debe poseer un diseño <strong>"Responsive"</strong> para visualización en computadores, tablets y teléfonos inteligentes.</li>
+                                <li class="mb-2">✅ El sistema debe poseer <strong>interfaces gráficas bien formadas</strong>.</li>
+                                <li class="mb-2">✅ El sistema debe contar con un <strong>módulo de ayuda en línea</strong>.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Usabilidad y Documentación -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#rnf4">
+                            <i class="bi bi-book icon-wine me-2"></i> Usabilidad y Documentación
+                        </button>
+                    </h2>
+                    <div id="rnf4" class="accordion-collapse collapse" data-bs-parent="#accordionRNF">
+                        <div class="accordion-body">
+                            <ul class="list-unstyled">
+                                <li class="mb-2">✅ El tiempo de aprendizaje del sistema por un usuario deberá ser <strong>menor a 4 horas</strong>.</li>
+                                <li class="mb-2">✅ La tasa de errores cometidos por el usuario deberá ser <strong>menor del 1%</strong> de las transacciones totales ejecutadas.</li>
+                                <li class="mb-2">✅ El sistema debe contar con <strong>manuales de usuario</strong> estructurados adecuadamente.</li>
+                                <li class="mb-2">✅ El sistema debe proporcionar <strong>mensajes de error informativos</strong> y orientados a usuario final.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESUMEN -->
+    <section>
+        <div class="section-card text-center" style="border-left-color: #d4a574;">
+            <h2 class="section-title" style="border-bottom-color: #722f37;">🍷 Resumen del Caso</h2>
+            <p class="lead mx-auto" style="max-width: 800px;">
+                <strong>Viña Urbana</strong> es una tienda de vinos boutique en Providencia que enfrenta la disminución de ventas por la falta de presencia digital. El caso plantea la implementación de un <strong>sistema de ventas on-line</strong> que permita a los clientes comprar vinos desde cualquier lugar, con registro seguro, pagos electrónicos, despacho a domicilio, gestión de inventario de ediciones limitadas y reportes para el dueño del negocio.
+            </p>
+            <div class="mt-4">
+                <span class="badge badge-wine me-2 mb-2">9 Casos de Uso</span>
+                <span class="badge badge-wine me-2 mb-2">13+ Requisitos Funcionales</span>
+                <span class="badge badge-wine me-2 mb-2">17 Requisitos No Funcionales</span>
+                <span class="badge badge-wine me-2 mb-2">Arquitectura Web en Capas</span>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer-wine text-center py-4">
+    <div class="container">
+        <p class="mb-0">&copy; 2026 Viña Urbana – Tienda de Vinos Boutique | Caso 19 Traducido</p>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html> <!-- Declara el tipo de documento como HTML5 -->
+<html lang="es"> <!-- Etiqueta raíz del HTML con idioma español -->
+<head>
+    <meta charset="UTF-8"> <!-- Define la codificación de caracteres como UTF-8 para soportar tildes y ñ -->
+    <title>Mis Tareas</title> <!-- Título que aparece en la pestaña del navegador -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Enlaza la librería de Bootstrap 5.3.0 desde un CDN para usar estilos y componentes predefinidos -->
+
+    <script>
+
+        // ========== VARIABLES GLOBALES ==========
+        let tareas = []; // Declara un arreglo vacío llamado "tareas" que guardará todas las tareas creadas. Se usa "let" porque su contenido cambia (se agregan y eliminan elementos).
+
+        // ========== FUNCIÓN: AGREGAR TAREA ==========
+        function agregarTarea() { // Define la función que se ejecuta cuando el usuario hace clic en "Agregar".
+
+            // --- Obtener el valor del input ---
+            let input = document.getElementById("txtTarea"); // Busca en el HTML el elemento con id="txtTarea" (el campo de texto) y lo guarda en la variable "input".
+            let texto = input.value; // Extrae el texto que el usuario escribió en el campo de texto y lo guarda en "texto".
+
+            // --- Validación: no permitir campos vacíos ---
+            if (texto === "") { // Compara estrictamente si el texto está vacío (ni siquiera un espacio). El operador "===" verifica valor Y tipo de dato.
+                alert("Escribe algo primero"); // Muestra una ventana emergente (alerta) avisando que debe escribir algo.
+                return; // Detiene la ejecución de la función aquí mismo. Lo que está después NO se ejecuta.
+            }
+
+            // --- Crear el objeto tarea ---
+            let tarea = { // Crea un objeto JavaScript con 3 propiedades para representar una tarea.
+                "id": Date.now(),       // "id": Usa Date.now() que devuelve los milisegundos desde el 1 de enero de 1970. Esto garantiza que cada tarea tenga un ID único (nunca se repite porque el tiempo siempre avanza).
+                "texto": texto,         // "texto": Guarda el texto que el usuario escribió en el input.
+                "completada": false     // "completada": Inicia en false porque la tarea recién creada aún no está terminada.
+            };
+
+            // --- Agregar la tarea al arreglo y actualizar la interfaz ---
+            tareas.push(tarea); // Agrega el objeto "tarea" al final del arreglo "tareas". push() añade un elemento al final del arreglo sin eliminar ningún otro.
+            input.value = ""; // Limpia el campo de texto poniendo su valor en cadena vacía, para que el usuario pueda escribir otra tarea sin borrar manualmente.
+            mostrarTareas(); // Llama a la función que dibuja todas las tareas en la pantalla (actualiza la lista visual).
+        }
+
+        // ========== FUNCIÓN: ELIMINAR TAREA ==========
+        function eliminarTarea(id) { // Recibe el "id" de la tarea que se quiere eliminar (se pasa desde el botón "X").
+            // La siguiente línea crea un NUEVO arreglo que contiene todas las tareas cuyo id sea DIFERENTE al id que se pasó.
+            // El método .filter() NO modifica el arreglo original, devuelve uno nuevo.
+            // La condición !== (diferente de) significa: "quédate con todas las tareas que NO sean la que quiero borrar".
+            tareas = tareas.filter(tarea => tarea.id !== id); // Ejemplo: si tareas = [{id:1}, {id:2}, {id:3}] y llamo eliminarTarea(2), el resultado es [{id:1}, {id:3}]. Se reasigna con "=" porque filter no modifica el original.
+            mostrarTareas(); // Vuelve a dibujar la lista actualizada sin la tarea eliminada.
+        }
+
+        // ========== FUNCIÓN: MOSTRAR TAREAS ==========
+        function mostrarTareas() { // Función que dibuja (renderiza) todas las tareas en la pantalla.
+            // --- Obtener elementos del DOM ---
+            let lista = document.getElementById("listaTareas"); // Busca el elemento <ul> con id="listaTareas" donde se mostrarán las tareas.
+            let contador = document.getElementById("contador"); // Busca el elemento <p> con id="contador" que muestra cuántas tareas hay.
+
+            // --- Limpiar la lista antes de volver a dibujar ---
+            lista.innerHTML = ""; // Borra todo el contenido HTML de la lista. Esto es necesario para evitar duplicados: si no se limpiara, cada vez que se llama se agregarían las tareas encima de las anteriores.
+
+            // --- Recorrer cada tarea y crear su elemento visual ---
+            tareas.forEach((tarea) => { // forEach recorre cada elemento del arreglo "tareas" una por una. Para cada tarea ejecuta el código de adentro.
+
+                // --- Crear el elemento <li> de la lista ---
+                let li = document.createElement("li"); // Crea un elemento HTML <li> (elemento de lista) en memoria, aún no está en la pantalla.
+                li.className = "list-group-item d-flex justify-content-between align-items-center"; // Le asigna clases de Bootstrap: "list-group-item" para estilo de lista, "d-flex" para flexbox, "justify-content-between" para separar elementos a los extremos, "align-items-center" para centrar verticalmente.
+                li.innerText = tarea.texto; // Pone el texto de la tarea como contenido visible del <li>.
+
+                // --- Crear el botón de eliminar "X" ---
+                let boton = document.createElement("button"); // Crea un elemento <button> en memoria.
+                boton.innerText = "X"; // Pone la letra "X" como texto visible del botón.
+                boton.className = "btn btn-danger btn-sm"; // Le asigna clases de Bootstrap: "btn" para estilo de botón, "btn-danger" para color rojo, "btn-sm" para tamaño pequeño.
+                boton.setAttribute("type", "button"); // Le define el atributo type="button" para que se comporte como botón y no como envío de formulario.
+
+                // --- Asignar la función de eliminar al botón ---
+                boton.onclick = function () { // Cuando el usuario haga clic en este botón, se ejecuta esta función.
+                    eliminarTarea(tarea.id); // Llama a eliminarTarea pasando el id de ESTA tarea específica (la que está siendo recorrida por forEach).
+                };
+
+                // --- Construir la estructura visual ---
+                li.appendChild(boton); // Agrega el botón "X" como hijo del <li> (el botón queda dentro del elemento de lista).
+                lista.appendChild(li); // Agrega el <li> (con su botón) como hijo del <ul> (la lista visible en la pantalla).
+            }); // Fin del forEach
+
+            // --- Mostrar en consola el total de tareas ---
+            console.log("Total tareas: " + tareas.length); // Imprime en la consola del navegador cuántas tareas hay. .length devuelve la cantidad de elementos del arreglo.
+
+            // --- Actualizar el contador visual ---
+            if (tareas.length === 0) { // Si el arreglo está vacío (no hay tareas)...
+                contador.innerText = "No hay tareas"; // ...muestra el mensaje "No hay tareas" en el párrafo.
+            } else { // Si hay al menos una tarea...
+                contador.innerText = tareas.length + " tarea(s)"; // ...muestra la cantidad de tareas + " tarea(s)". Ejemplo: "2 tarea(s)".
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+    <!-- Estructura visual del formulario usando clases de Bootstrap -->
+    <div class="container mt-4"> <!-- Contenedor principal de Bootstrap con margen superior de 4 unidades (mt-4) -->
+        <h1 class="text-center mb-4">Mis Tareas</h1> <!-- Título centrado con margen inferior de 4 unidades -->
+        <div class="row justify-content-center"> <!-- Fila de Bootstrap que centra su contenido horizontalmente -->
+            <div class="col-md-6"> <!-- Columna que ocupa 6 de 12 columnas en pantallas medianas o más (mitad del ancho) -->
+
+                <!-- Campo de entrada de texto + botón Agregar -->
+                <div class="input-group mb-3"> <!-- Grupo de entrada de Bootstrap con margen inferior de 3 unidades -->
+                    <input type="text" id="txtTarea" class="form-control" placeholder="Escribe una tarea...">
+                    <!-- Campo de texto con id="txtTarea" (lo usa JavaScript para leer el valor) con placeholder de texto guía -->
+                    <button class="btn btn-primary" onclick="agregarTarea()">Agregar</button>
+                    <!-- Botón azul que al hacer clic ejecuta la función agregarTarea() definida en JavaScript -->
+                </div>
+
+                <!-- Lista donde se mostrarán las tareas -->
+                <ul id="listaTareas" class="list-group"></ul>
+                <!-- Elemento <ul> vacío con id="listaTareas" (lo usa JavaScript para insertar las tareas dinámicamente) -->
+
+                <!-- Contador de tareas -->
+                <p class="text-muted mt-3 text-center" id="contador">No hay tareas</p>
+                <!-- Párrafo con id="contador" (lo usa JavaScript para mostrar cuántas hay). Texto gris (text-muted), margen superior 3, centrado -->
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
